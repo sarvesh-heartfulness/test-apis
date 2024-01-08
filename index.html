@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API JSON Display</title>
+</head>
+<body>
+  <h1>API JSON Display</h1>
+  
+  <button id="fetchData1">Ping Allocation Service</button>
+  <button id="fetchData2">Check DB Connection</button>
+  <button id="fetchData3">List Dorms</button>
+
+  <pre id="displayData"></pre>
+
+  <script>
+    // Function to fetch data from the API
+    async function fetchData(apiEndpoint) {
+      try {
+        const response = await fetch(apiEndpoint);
+        const data = await response.json();
+        displayResult(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    // Function to display JSON result
+    function displayResult(data) {
+      const displayElement = document.getElementById('displayData');
+      displayElement.textContent = JSON.stringify(data, null, 2);
+    }
+
+    // Event listeners for each button click
+    document.getElementById('fetchData1').addEventListener('click', () => {
+      fetchData('https://allocations.dev.heartfulnessinstitute.in'); // Replace with your API endpoint 1
+    });
+
+    document.getElementById('fetchData2').addEventListener('click', () => {
+      fetchData('https://allocations.dev.heartfulnessinstitute.in/checkdb'); // Replace with your API endpoint 2
+    });
+
+    document.getElementById('fetchData3').addEventListener('click', () => {
+      fetchData('https://allocations.dev.heartfulnessinstitute.in/dorms'); // Replace with your API endpoint 3
+    });
+  </script>
+</body>
+</html>
+
