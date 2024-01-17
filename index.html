@@ -14,10 +14,17 @@
   <pre id="displayData"></pre>
 
   <script>
+    const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer token`,
+	'X-Client-Id' : `a3kR6ZGYQRrGJ5cCp4v2HgVeMK8sKcr6850LURoL`,
+  },
+};
     // Function to fetch data from the API
     async function fetchData(apiEndpoint) {
       try {
-        const response = await fetch(apiEndpoint);
+        const response = await fetch(apiEndpoint, requestOptions);
         const data = await response.json();
         displayResult(data);
       } catch (error) {
@@ -30,6 +37,7 @@
       const displayElement = document.getElementById('displayData');
       displayElement.textContent = JSON.stringify(data, null, 2);
     }
+    
 
     // Event listeners for each button click
     document.getElementById('fetchData1').addEventListener('click', () => {
