@@ -16,17 +16,18 @@
   <pre id="displayData"></pre>
 
   <script>
-    const requestOptions = {
-  method: 'GET',
+    
+    // Function to fetch data from the API
+    async function fetchData(apiEndpoint, method = 'GET') {
+	const requestOptions = {
+  method: method,
   headers: {
     'Authorization': `Bearer eyJhXIw`,
 	'X-Client-Id' : `a3kR6ZGYQRrGJ5cCp4v`,
   },
 };
-    // Function to fetch data from the API
-    async function fetchData(apiEndpoint, method = 'GET') {
       try {
-        const response = await fetch(apiEndpoint, requestOptions, method);
+        const response = await fetch(apiEndpoint, requestOptions);
         const data = await response.json();
         displayResult(data);
       } catch (error) {
