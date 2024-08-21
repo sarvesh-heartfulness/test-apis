@@ -10,6 +10,8 @@
   <button id="fetchData1">Ping Allocation Service</button>
   <button id="fetchData2">Check DB Connection</button>
   <button id="fetchData3">List Dorms</button>
+  <button id="fetchData4">Get Public Events</button>
+  <button id="fetchData5">Public Events: Clear Cache</button>
 
   <pre id="displayData"></pre>
 
@@ -22,9 +24,9 @@
   },
 };
     // Function to fetch data from the API
-    async function fetchData(apiEndpoint) {
+    async function fetchData(apiEndpoint, method = 'GET') {
       try {
-        const response = await fetch(apiEndpoint, requestOptions);
+        const response = await fetch(apiEndpoint, requestOptions, method);
         const data = await response.json();
         displayResult(data);
       } catch (error) {
@@ -50,6 +52,12 @@
 
     document.getElementById('fetchData3').addEventListener('click', () => {
       fetchData('https://pfn-events.staging.peacefulness.org/api/me/'); // Replace with your API endpoint 3
+    });
+    document.getElementById('fetchData4').addEventListener('click', () => {
+      fetchData('https://profile.srcm.net/uep/public-events/'); // Replace with your API endpoint 4
+    });
+    document.getElementById('fetchData5').addEventListener('click', () => {
+      fetchData('https://profile.srcm.net/uep/public-events/clear_cache', 'POST'); // Replace with your API endpoint 5
     });
   </script>
 </body>
