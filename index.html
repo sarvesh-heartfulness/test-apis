@@ -7,8 +7,8 @@
 <body>
   <h1>API JSON Display</h1>
   
-  <button id="fetchData1">Ping Allocation Service</button>
-  <button id="fetchData2">Check DB Connection</button>
+  <button id="fetchData1">Static API QA</button>
+  <button id="fetchData2">IP Info Cloudfunction</button>
   <button id="fetchData3">List Dorms</button>
   <button id="fetchData4">Get Public Events</button>
   <button id="fetchData5">Public Events: Clear Cache</button>
@@ -45,7 +45,7 @@
 
     // Event listeners for each button click
     document.getElementById('fetchData1').addEventListener('click', () => {
-      fetchData('https://allocations.qa.heartfulnessinstitute.in'); // Replace with your API endpoint 1
+      fetchData('https://static-api.qa.heartfulness.org/countries/id/254.json'); // Replace with your API endpoint 1
     });
 
     document.getElementById('fetchData2').addEventListener('click', () => {
